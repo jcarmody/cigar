@@ -1,0 +1,4 @@
+# Allow images only
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Allow from all
+</FilesMatch>
