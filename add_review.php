@@ -38,14 +38,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Cigar name is required.';
     } else {
         $photo = handleUpload('photo');
-        $stmt = $pdo->prepare(""
+        $stmt = $pdo->prepare("
             INSERT INTO reviews (
                 cigar_id, brand, name, vitola, smoke_date, overall_rating,
                 appearance, construction, burn, draw, flavor, aroma,
                 cold_draw, first_third, second_third, final_third,
                 pairings, location, notes, photo
             ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-        """);
+        ");
         $stmt->execute([
             $cigar_id, $brand ?: null, $name, $vitola ?: null, $smoke_date, $overall,
             $appearance, $construction, $burn, $draw, $flavor, $aroma,
