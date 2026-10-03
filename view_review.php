@@ -31,6 +31,7 @@ function stars(?float $n): string {
         </p>
     </div>
     <div class="actions">
+        <a href="add_review.php?brand=<?= urlencode($r['brand'] ?? '') ?>&name=<?= urlencode($r['name']) ?>&vitola=<?= urlencode($r['vitola'] ?? '') ?>" class="btn btn-primary">Review Again</a>
         <a href="edit_review.php?id=<?= $id ?>" class="btn btn-secondary">Edit</a>
         <a href="reviews.php" class="btn btn-secondary">All Reviews</a>
     </div>
