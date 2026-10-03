@@ -38,14 +38,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Cigar name is required.';
     } else {
         $photo = handleUpload('photo');
-        $stmt = $pdo->prepare("
+        $stmt = $pdo->prepare(""
             INSERT INTO reviews (
                 cigar_id, brand, name, vitola, smoke_date, overall_rating,
                 appearance, construction, burn, draw, flavor, aroma,
                 cold_draw, first_third, second_third, final_third,
                 pairings, location, notes, photo
             ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-        ");
+        """);
         $stmt->execute([
             $cigar_id, $brand ?: null, $name, $vitola ?: null, $smoke_date, $overall,
             $appearance, $construction, $burn, $draw, $flavor, $aroma,
@@ -85,22 +85,22 @@ require __DIR__ . '/includes/header.php';
     <div class="form-row">
         <div class="form-group">
             <label for="brand">Brand</label>
-            <input type="text" id="brand" name="brand" value="<?= e($_POST['brand'] ?? $prefill['brand'] ?? '') ?>">
+            <input type="text" id="brand" name="brand" value="<?= e($_POST['brand'] ?? $_GET['brand'] ?? $prefill['brand'] ?? '') ?>">
         </div>
         <div class="form-group">
             <label for="name">Name / Blend *</label>
-            <input type="text" id="name" name="name" required value="<?= e($_POST['name'] ?? $prefill['name'] ?? '') ?>">
+            <input type="text" id="name" name="name" required value="<?= e($_POST['name'] ?? $_GET['name'] ?? $prefill['name'] ?? '') ?>">
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
             <label for="vitola">Vitola</label>
-            <input type="text" id="vitola" name="vitola" value="<?= e($_POST['vitola'] ?? $prefill['vitola'] ?? '') ?>">
+            <input type="text" id="vitola" name="vitola" value="<?= e($_POST['vitola'] ?? $_GET['vitola'] ?? $prefill['vitola'] ?? '') ?>">
         </div>
         <div class="form-group">
             <label for="smoke_date">Smoke date</label>
-            <input type="date" id="smoke_date" name="smoke_date" value="<?= e($_POST['smoke_date'] ?? date('Y-m-d')) ?>">
+            <input type="date" id="smoke_date" name="smoke_date" value="<?= e($_POST['smoke_date'] ?? $_GET['smoke_date'] ?? date('Y-m-d')) ?>">
         </div>
     </div>
 
