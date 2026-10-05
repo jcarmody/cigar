@@ -31,8 +31,12 @@ require __DIR__ . '/includes/header.php';
         <p class="subtitle" style="margin-bottom:0;"><?= e($c['vitola'] ?? '') ?> · <?= e($c['humidor_name'] ?? '') ?></p>
     </div>
     <div class="actions">
-        <a href="add_cigar.php?brand=<?= urlencode($c['brand'] ?? '') ?>&name=<?= urlencode($c['name']) ?>&vitola=<?= urlencode($c['vitola'] ?? '') ?>&wrapper=<?= urlencode($c['wrapper'] ?? '') ?>&origin=<?= urlencode($c['origin'] ?? '') ?>&strength=<?= urlencode($c['strength'] ?? '') ?>" class="btn btn-primary">Add Again</a>
+        <a href="add_cigar.php?brand=<?= urlencode($c['brand'] ?? '') ?>&name=<?= urlencode($c['name']) ?>&vitola=<?= urlencode($c['vitola'] ?? '') ?>&wrapper=<?= urlencode($c['wrapper'] ?? '') ?>[...]
         <a href="edit_cigar.php?id=<?= $id ?>" class="btn btn-secondary">Edit</a>
+        <form method="post" action="smoke_one.php" style="display:inline;">
+            <input type="hidden" name="cigar_id" value="<?= $id ?>">
+            <button type="submit" class="btn btn-secondary" <?= $c['quantity'] <= 0 ? 'disabled' : '' ?>>Smoked One</button>
+        </form>
         <a href="add_review.php?cigar_id=<?= $id ?>" class="btn btn-primary">Log Review</a>
     </div>
 </div>
