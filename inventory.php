@@ -107,6 +107,10 @@ require __DIR__ . '/includes/header.php';
                     <div class="actions">
                         <a href="view_cigar.php?id=<?= (int)$c['id'] ?>" class="btn btn-sm btn-secondary">View</a>
                         <a href="edit_cigar.php?id=<?= (int)$c['id'] ?>" class="btn btn-sm btn-secondary">Edit</a>
+                        <form method="post" action="smoke_one.php" style="display:inline;">
+                            <input type="hidden" name="cigar_id" value="<?= (int)$c['id'] ?>">
+                            <button type="submit" class="btn btn-sm btn-secondary" <?= $c['quantity'] <= 0 ? 'disabled' : '' ?>>Smoked</button>
+                        </form>
                         <a href="add_review.php?cigar_id=<?= (int)$c['id'] ?>" class="btn btn-sm btn-primary">Review</a>
                     </div>
                 </div>
